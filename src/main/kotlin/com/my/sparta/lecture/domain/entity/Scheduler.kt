@@ -1,7 +1,9 @@
 package com.my.sparta.lecture.domain.entity
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import jakarta.persistence.*
 import lombok.AccessLevel
+import lombok.AllArgsConstructor
 import lombok.Getter
 import lombok.NoArgsConstructor
 import java.time.LocalDate
@@ -12,7 +14,7 @@ import java.time.LocalTime
 @Entity
 @Table(name = "lecture_schedule")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-data class Scheduler constructor(
+class Scheduler(
 
     @Id
     @Column(name = "schedule_id")
@@ -64,7 +66,7 @@ data class Scheduler constructor(
     }
 
     fun minusCapacity() {
-        check(this.capacity <= 0) {
+        if (this.capacity <= 0) {
             "수강 인원을 초과 하엿습니다. 현재 남은 수강인원 =$capacity "
             // 해당 check 에 걸리면 이벤트 발행해서 마감 이벤트를 consuming 하게 작성해야겠다.
         }

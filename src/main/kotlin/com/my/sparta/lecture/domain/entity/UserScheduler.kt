@@ -47,16 +47,15 @@ class UserScheduler(
                 )
             )
 
-    // 양방향 관계 설정 (Users와 연결)
     fun addUser(user: Users) {
         this.users = user
-        user.userScheduler.add(this) // Users 엔티티와 연관된 Set에 추가
+        user.userScheduler.add(this)
     }
 
     // 양방향 관계 설정 (Scheduler와 연결)
     fun addScheduler(scheduler: Scheduler) {
         this.scheduler = scheduler
-        scheduler.userScheduler.add(this) // Scheduler 엔티티와 연관된 Set에 추가
+        scheduler.userScheduler.add(this)
     }
 
 
@@ -74,13 +73,6 @@ class UserScheduler(
         }
     }
 
-    fun checkOrThrow(condition: Boolean, exception: () -> Throwable) {
-        if (!condition) throw exception()
-    }
-
-    override fun toString(): String {
-        return "UserScheduler(userSchedulerId=$userSchedulerId, lectureId='$lectureId', users=$users, scheduler=$scheduler, initDate=$initDate)"
-    }
 
 
     @Embeddable
