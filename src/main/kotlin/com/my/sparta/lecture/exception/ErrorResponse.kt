@@ -6,17 +6,24 @@ import org.springframework.http.ProblemDetail
 import org.springframework.web.ErrorResponse
 import java.time.LocalDateTime
 
-data class ErrorResponse(
-    val message: String,
-    val errorCode: String,
+
+data class CustomErrorResponse(
     val timestamp: LocalDateTime = LocalDateTime.now()
 ) : ErrorResponse {
 
+    private lateinit var problemDetail: ProblemDetail
+
+    constructor(message: String, errorCode: String) : this() {
+        problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, message).apply {
+            title = "Internal Server Error"
+        }
+    }
+
     override fun getStatusCode(): HttpStatusCode {
-        return HttpStatus.valueOf(errorCode)
+        return HttpStatus.INTERNAL_SERVER_ERROR
     }
 
     override fun getBody(): ProblemDetail {
-        return ProblemDetail.forStatusAndDetail(this.statusCode, this.message)
+        return problemDetail
     }
 }
