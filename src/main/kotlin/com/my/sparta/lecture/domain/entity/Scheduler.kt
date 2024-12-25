@@ -39,7 +39,10 @@ data class Scheduler constructor(
     @Embedded
     val duration: Duration,
 
-    ) {
+    @Enumerated(EnumType.STRING)
+    val deadLine: DeadLine
+
+) {
 
     @Getter
     enum class Days(
@@ -56,9 +59,14 @@ data class Scheduler constructor(
 
     }
 
+    enum class DeadLine() {
+        PROGRESS, DONE
+    }
+
     fun minusCapacity() {
         check(this.capacity <= 0) {
             "수강 인원을 초과 하엿습니다. 현재 남은 수강인원 =$capacity "
+            // 해당 check 에 걸리면 이벤트 발행해서 마감 이벤트를 consuming 하게 작성해야겠다.
         }
         this.capacity -= 1;
     }
