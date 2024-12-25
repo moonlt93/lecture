@@ -1,10 +1,12 @@
 package com.my.sparta.lecture.service
 
 import com.my.sparta.lecture.controller.`interface`.request.ApplyLectureRequest
+import com.my.sparta.lecture.domain.entity.Scheduler
 import com.my.sparta.lecture.domain.entity.UserScheduler
 import com.my.sparta.lecture.domain.entity.Users
 import com.my.sparta.lecture.repository.SchedulerRepository
 import com.my.sparta.lecture.repository.UserSchedulerRepository
+import jakarta.persistence.EntityExistsException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -30,7 +32,13 @@ class ApplyLectureService(
         val scheduler = schedulerRepository.getSchedulerByLectureId(request.lectureId, applicationDate);
 
         // 해당 강의에 이미 신청했는지 확인
-        userSchedulesRepository.getUserSchedulerWithSchedulerId(scheduler.id, request.userId);
+        val userSchedulerWithSchedulerId =
+            userSchedulesRepository.getUserSchedulerWithSchedulerId(scheduler.id, request.userId);
+
+        check(userSchedulerWithSchedulerId == null) {
+            throw EntityExistsException("해당 강의는 이미 신청한 적이 있는 강의 입니다. ")
+        }
+
 
         val createUserScheduler = UserScheduler.create(scheduler.lectureId, Users(request.userId), scheduler);
         val saveUserScheduler = userSchedulesRepository.saveUserScheduler(createUserScheduler)
