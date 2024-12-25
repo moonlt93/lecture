@@ -6,5 +6,6 @@ interface UserSchedulerRepository {
 
     fun saveUserScheduler(entity: UserScheduler): UserScheduler
 
-    fun getUserSchedulerWithSchedulerId(schedulerId: String, userId: String): UserScheduler
+    fun getUserSchedulerWithSchedulerId(schedulerId: String, userId: String): UserScheduler?
+    fun getClosedLectureIdByRegisteredUserId(userId: String): List<String>
 }

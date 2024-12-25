@@ -15,6 +15,12 @@ class SchedulerRepositoryImpl(
 ) : SchedulerRepository {
 
 
+    override fun saveScheduler(scheduler: Scheduler) {
+
+        schedulerJpaRepository.save(scheduler)
+
+    }
+
     override fun getSchedulerByLectureId(lectureId: String, targetDate: LocalDateTime): Scheduler {
 
         val date = LocalDate.from(targetDate)
@@ -25,9 +31,15 @@ class SchedulerRepositoryImpl(
 
     }
 
-    override fun saveScheduler(scheduler: Scheduler) {
 
-        schedulerJpaRepository.save(scheduler)
+    override fun getSchedulerByStatus(): List<Scheduler> {
 
+        return schedulerJpaRepository.findByStatusProgress(Scheduler.DeadLine.PROGRESS);
+
+    }
+
+    override fun getFinishedSchedules(userScheduleIds: List<String>): List<Scheduler> {
+
+        return schedulerJpaRepository.findAllById(userScheduleIds);
     }
 }

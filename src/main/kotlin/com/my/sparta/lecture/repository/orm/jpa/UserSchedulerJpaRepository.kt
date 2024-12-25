@@ -10,7 +10,11 @@ interface UserSchedulerJpaRepository : JpaRepository<UserScheduler, Long> {
     @Query("""
         SELECT us 
         FROM UserScheduler us 
-        WHERE us.lectureId = :lectureId AND us.users.id = :userId
+        WHERE us.scheduler.id = :schedulerId AND us.users.id = :userId
     """)
-    fun findByLectureIdAndUserId(lectureId: String, userId: String): Optional<UserScheduler>
+    fun findByLectureIdAndUserId(schedulerId: String, userId: String): UserScheduler?
+
+    @Query("select uc from UserScheduler as uc where uc.users.id = :userId")
+    fun findByUserId(userId: String): List<UserScheduler>
+
 }
