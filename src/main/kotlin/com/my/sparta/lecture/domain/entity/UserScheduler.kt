@@ -73,6 +73,13 @@ class UserScheduler(
         }
     }
 
+    fun checkOrThrow(condition: Boolean, exception: () -> Throwable) {
+        if (!condition) throw exception()
+    }
+
+    override fun toString(): String {
+        return "UserScheduler(userSchedulerId=$userSchedulerId, lectureId='$lectureId', users=$users, scheduler=$scheduler, initDate=$initDate)"
+    }
 
 
     @Embeddable

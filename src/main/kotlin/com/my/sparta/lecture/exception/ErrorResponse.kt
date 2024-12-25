@@ -24,6 +24,6 @@ data class CustomErrorResponse(
     }
 
     override fun getBody(): ProblemDetail {
-        return problemDetail
+        return ProblemDetail.forStatusAndDetail(this.statusCode, this.message)
     }
 }
