@@ -1,6 +1,6 @@
 package com.my.sparta.lecture
 
-import com.my.sparta.lecture.exception.ErrorResponse
+import com.my.sparta.lecture.exception.CustomErrorResponse
 import jakarta.persistence.EntityExistsException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
