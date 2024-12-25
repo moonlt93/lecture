@@ -3,7 +3,6 @@ package com.my.sparta.lecture.repository.impl
 import com.my.sparta.lecture.domain.entity.UserScheduler
 import com.my.sparta.lecture.repository.UserSchedulerRepository
 import com.my.sparta.lecture.repository.orm.jpa.UserSchedulerJpaRepository
-import jakarta.persistence.EntityExistsException
 import org.springframework.stereotype.Repository
 
 @Repository
