@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class GetCompletedLectureService(
+class GetLectureListService(
     private val schedulerRepository: SchedulerRepository,
     private val userSchedulerRepository: UserSchedulerRepository,
     private val lectureRepository: LectureRepository,
