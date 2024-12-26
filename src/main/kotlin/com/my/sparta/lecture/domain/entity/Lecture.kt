@@ -13,7 +13,6 @@ import java.time.LocalDateTime
 data class Lecture constructor(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     val id: String,
 
     @Column(name = "lecture_name")
