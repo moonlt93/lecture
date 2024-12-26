@@ -37,6 +37,13 @@ class SchedulerRepositoryImpl(
 
     }
 
+    override fun getSchedulerById(schedulerId: String): Scheduler {
+        return schedulerJpaRepository.findById(schedulerId).orElseThrow {
+            throw EntityNotFoundException("$schedulerId 로 찾는 수강 스케쥴이 없습니다.")
+        }
+    }
+
+
     override fun getFinishedSchedules(userScheduleIds: List<String>): List<Scheduler> {
 
         return schedulerJpaRepository.findAllById(userScheduleIds);
