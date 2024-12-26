@@ -2,10 +2,12 @@ package com.my.sparta.lecture.controller.`interface`.response
 
 import com.my.sparta.lecture.domain.entity.Scheduler
 import com.my.sparta.lecture.domain.entity.UserScheduler
+import lombok.Data
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
+@Data
 class GetSchedulerInfoResponse(
     var id: String,
 
@@ -37,5 +39,18 @@ class GetSchedulerInfoResponse(
             )
         }
     }
+
+    constructor(id: String, lectureId: String) : this(
+        id = id,
+        lectureId = lectureId,
+        createAt = LocalDateTime.now(),
+        updateAt = LocalDateTime.now(),
+        day = "",                  // 기본값 설정
+        capacity = 0,             // 기본값 설정
+        targetDate = LocalDate.now(),
+        startTime = LocalTime.of(9, 0),   // 기본 예시
+        endTime = LocalTime.of(17, 0),    // 기본 예시
+        deadLine = ""              // 기본값 설정
+    )
 
 }
