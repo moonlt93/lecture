@@ -1,9 +1,8 @@
 package com.my.sparta.lecture.domain.entity
 
-import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.my.sparta.lecture.exception.CapacityExceededException
 import jakarta.persistence.*
 import lombok.AccessLevel
-import lombok.AllArgsConstructor
 import lombok.Getter
 import lombok.NoArgsConstructor
 import java.time.LocalDate
@@ -39,10 +38,10 @@ class Scheduler(
     var userScheduler: MutableSet<UserScheduler> = mutableSetOf(),
 
     @Embedded
-    val duration: Duration,
+    var duration: Duration,
 
     @Enumerated(EnumType.STRING)
-    val deadLine: DeadLine
+    var deadLine: DeadLine
 
 ) {
 
@@ -67,10 +66,13 @@ class Scheduler(
 
     fun minusCapacity() {
         if (this.capacity <= 0) {
-            "수강 인원을 초과 하엿습니다. 현재 남은 수강인원 =$capacity "
-            // 해당 check 에 걸리면 이벤트 발행해서 마감 이벤트를 consuming 하게 작성해야겠다.
+            throw CapacityExceededException(this.id, this.capacity)
         }
         this.capacity -= 1;
+    }
+
+    fun changeCutoffStatus() {
+        this.deadLine = DeadLine.DONE
     }
 
     @Embeddable
