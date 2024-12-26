@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query
 
 interface UserSchedulerJpaRepository : JpaRepository<UserScheduler, Long> {
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Lock(LockModeType.PESSIMISTIC_READ)
     @Query(
         """
         SELECT us 

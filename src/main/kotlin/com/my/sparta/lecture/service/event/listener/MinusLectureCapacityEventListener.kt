@@ -19,6 +19,7 @@ class MinusLectureCapacityEventListener(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(javaClass)
 
+
     @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     fun handleMinusLectureCapacityEvent(event: MinusCapacityEvent) {
 
@@ -35,7 +36,11 @@ class MinusLectureCapacityEventListener(
         try {
 
             scheduler.minusCapacity();
-            scheduler.changeCutoffStatus();
+
+            check(scheduler.capacity != 0){
+                scheduler.changeCutoffStatus();
+            }
+
             schedulerRepository.saveScheduler(scheduler)
 
         } catch (ex: CapacityExceededException) {
@@ -44,6 +49,8 @@ class MinusLectureCapacityEventListener(
 
             val capacityExceededEvent = CapacityExceededEvent(schedulerId, currentCapacity);
             eventPublisher.publishEvent(capacityExceededEvent)
+        } catch (ex: IllegalStateException) {
+            logger.warn(ex.message, ex);
         }
 
     }

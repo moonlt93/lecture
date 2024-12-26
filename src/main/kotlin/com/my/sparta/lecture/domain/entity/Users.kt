@@ -15,6 +15,7 @@ class Users(
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "user_id")
     var id: String,
 
     @Column(nullable = false)

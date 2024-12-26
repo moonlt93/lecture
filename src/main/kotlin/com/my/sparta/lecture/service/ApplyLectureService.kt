@@ -29,7 +29,6 @@ class ApplyLectureService(
     private val logger: Logger = LoggerFactory.getLogger(javaClass)
 
     @Transactional
-    // 수강 신청을 하려는데 , 수강 목록에서 선택을 해서 내가 신청을 할텐데 requestBody로 해당 class id로 조회해와서 언제 며칠에 신청하는지 받아야할듯
     fun applyUserByRequest(request: ApplyLectureRequest): UserScheduler {
 
         var applicationDate = mapToDateTime(request)
@@ -48,7 +47,7 @@ class ApplyLectureService(
     }
 
     private fun mapToDateTime(request: ApplyLectureRequest): LocalDateTime {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-d HH:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
         val applicationDate = LocalDateTime.parse(request.applicationDate, formatter)
             ?: throw IllegalArgumentException("applicationDate cannot be null")
@@ -60,6 +59,7 @@ class ApplyLectureService(
         applicationDate: LocalDateTime
     ): Scheduler {
         try {
+
             // 신청 강의 스케쥴이 잡혀있는지 확인
             val scheduler = schedulerRepository.getSchedulerByLectureId(request.lectureId, applicationDate)
 
@@ -74,6 +74,7 @@ class ApplyLectureService(
             check(userSchedulerWithSchedulerId == null) {
                 throw EntityExistsException("해당 강의는 이미 신청한 적이 있는 강의 입니다.")
             }
+            logger.info("userId : ${request.userId}")
 
             return scheduler
 
