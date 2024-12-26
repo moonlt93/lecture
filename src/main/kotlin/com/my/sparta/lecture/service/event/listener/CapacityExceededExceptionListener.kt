@@ -12,7 +12,7 @@ class CapacityExceededExceptionListener(
     private val schedulerRepository: SchedulerRepository
 ) {
 
-    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMPLETION)
     fun handleCapacityExceededEvent(exception: CapacityExceededEvent) {
 
         val schedulerId = exception.schedulerId
