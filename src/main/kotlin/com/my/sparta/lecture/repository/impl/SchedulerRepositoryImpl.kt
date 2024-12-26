@@ -31,7 +31,6 @@ class SchedulerRepositoryImpl(
 
     }
 
-
     override fun getSchedulerByStatus(): List<Scheduler> {
 
         return schedulerJpaRepository.findByStatusProgress(Scheduler.DeadLine.PROGRESS);
