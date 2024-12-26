@@ -3,6 +3,8 @@ package com.my.sparta.lecture.repository.impl
 import com.my.sparta.lecture.domain.entity.UserScheduler
 import com.my.sparta.lecture.repository.UserSchedulerRepository
 import com.my.sparta.lecture.repository.orm.jpa.UserSchedulerJpaRepository
+import jakarta.persistence.LockModeType
+import org.springframework.data.jpa.repository.Lock
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -10,6 +12,7 @@ class UserSchedulerRepositoryImpl(
     private val userSchedulerJpaRepository: UserSchedulerJpaRepository
 ) : UserSchedulerRepository {
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     override fun saveUserScheduler(entity: UserScheduler): UserScheduler {
 
         return userSchedulerJpaRepository.save(entity)

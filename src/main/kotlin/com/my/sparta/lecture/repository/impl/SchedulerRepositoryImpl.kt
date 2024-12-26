@@ -4,6 +4,8 @@ import com.my.sparta.lecture.domain.entity.Scheduler
 import com.my.sparta.lecture.repository.SchedulerRepository
 import com.my.sparta.lecture.repository.orm.jpa.SchedulerJpaRepository
 import jakarta.persistence.EntityNotFoundException
+import jakarta.persistence.LockModeType
+import org.springframework.data.jpa.repository.Lock
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -14,7 +16,7 @@ class SchedulerRepositoryImpl(
     private val schedulerJpaRepository: SchedulerJpaRepository
 ) : SchedulerRepository {
 
-
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     override fun saveScheduler(scheduler: Scheduler) {
 
         schedulerJpaRepository.save(scheduler)
@@ -38,6 +40,7 @@ class SchedulerRepositoryImpl(
 
     }
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     override fun getSchedulerById(schedulerId: String): Scheduler {
         return schedulerJpaRepository.findById(schedulerId).orElseThrow {
             throw EntityNotFoundException("$schedulerId 로 찾는 수강 스케쥴이 없습니다.")
