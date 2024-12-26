@@ -1,7 +1,9 @@
 package com.my.sparta.lecture.controller.`interface`.response
 
 import com.my.sparta.lecture.domain.entity.Scheduler
+import lombok.Data
 
+@Data
 class GetNonSelectedLectureInfoListResponse constructor(
 
     val getSelectedLectureInfoResponse: List<GetSchedulerInfoResponse>
