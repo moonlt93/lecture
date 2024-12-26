@@ -20,6 +20,7 @@ class Scheduler(
     @GeneratedValue(strategy = GenerationType.UUID)
     var id: String,
 
+    @Column(name = "lecture_id")
     var lectureId: String,
 
     @Column(name = "create_at")
@@ -80,6 +81,23 @@ class Scheduler(
         val targetDate: LocalDate,
         val startTime: LocalTime,
         val endTime: LocalTime
+    )
+
+
+    constructor(id: String, lectureId: String) : this(
+        id = id,
+        lectureId = lectureId,
+        createAt = LocalDateTime.now(),
+        updateAt = LocalDateTime.now(),
+        day = Days.MONDAY, // 필요에 따라 기본값 조정
+        capacity = 0,      // 필요에 따라 기본값 조정
+        userScheduler = mutableSetOf(),
+        duration = Duration(
+            LocalDate.now(),
+            LocalTime.of(9, 0),
+            LocalTime.of(17, 0)
+        ),
+        deadLine = DeadLine.PROGRESS
     )
 
 }
