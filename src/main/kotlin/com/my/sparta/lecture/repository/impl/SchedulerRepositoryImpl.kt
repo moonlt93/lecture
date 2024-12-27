@@ -1,6 +1,6 @@
 package com.my.sparta.lecture.repository.impl
 
-import com.my.sparta.lecture.domain.entity.Scheduler
+import com.my.sparta.lecture.application.domain.entity.Scheduler
 import com.my.sparta.lecture.repository.SchedulerRepository
 import com.my.sparta.lecture.repository.orm.jpa.SchedulerJpaRepository
 import jakarta.persistence.EntityNotFoundException

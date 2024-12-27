@@ -1,13 +1,12 @@
-package com.my.sparta.lecture
+package com.my.sparta.lecture.application.common
 
-import com.my.sparta.lecture.exception.CustomErrorResponse
+import com.my.sparta.lecture.application.common.exception.CustomErrorResponse
 import jakarta.persistence.EntityExistsException
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.ErrorResponse
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 

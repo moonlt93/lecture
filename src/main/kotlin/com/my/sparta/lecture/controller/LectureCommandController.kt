@@ -2,7 +2,7 @@ package com.my.sparta.lecture.controller
 
 import com.my.sparta.lecture.controller.`interface`.request.ApplyLectureRequest
 import com.my.sparta.lecture.controller.`interface`.response.LectureResponse
-import com.my.sparta.lecture.service.ApplyLectureService
+import com.my.sparta.lecture.application.service.ApplyLectureService
 import lombok.RequiredArgsConstructor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

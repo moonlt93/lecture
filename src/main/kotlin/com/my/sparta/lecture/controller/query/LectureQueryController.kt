@@ -2,7 +2,7 @@ package com.my.sparta.lecture.controller.query
 
 import com.my.sparta.lecture.controller.`interface`.response.GetNonSelectedLectureInfoListResponse
 import com.my.sparta.lecture.controller.`interface`.response.GetSelectedLectureInfoList
-import com.my.sparta.lecture.service.GetLectureListService
+import com.my.sparta.lecture.application.service.GetLectureListService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping

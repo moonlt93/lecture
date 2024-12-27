@@ -4,7 +4,7 @@ import com.my.sparta.lecture.controller.`interface`.request.ApplyLectureRequest
 import com.my.sparta.lecture.repository.orm.jpa.LectureJpaRepository
 import com.my.sparta.lecture.repository.orm.jpa.UserSchedulerJpaRepository
 import com.my.sparta.lecture.repository.orm.jpa.UsersJpaRepository
-import com.my.sparta.lecture.service.ApplyLectureService
+import com.my.sparta.lecture.application.service.ApplyLectureService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals

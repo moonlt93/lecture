@@ -1,6 +1,6 @@
 package com.my.sparta.lecture.repository.orm.jpa
 
-import com.my.sparta.lecture.domain.entity.UserScheduler
+import com.my.sparta.lecture.application.domain.entity.UserScheduler
 import jakarta.persistence.LockModeType
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Lock

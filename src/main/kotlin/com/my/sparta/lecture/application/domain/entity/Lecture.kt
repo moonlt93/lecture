@@ -1,4 +1,4 @@
-package com.my.sparta.lecture.domain.entity
+package com.my.sparta.lecture.application.domain.entity
 
 import jakarta.persistence.*
 import lombok.AccessLevel

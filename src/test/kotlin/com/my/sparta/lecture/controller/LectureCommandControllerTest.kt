@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.my.sparta.lecture.controller.`interface`.request.ApplyLectureRequest
 import com.my.sparta.lecture.controller.`interface`.response.LectureResponse
 import com.my.sparta.lecture.controller.query.LectureQueryController
-import com.my.sparta.lecture.domain.entity.Scheduler
-import com.my.sparta.lecture.domain.entity.UserScheduler
-import com.my.sparta.lecture.domain.entity.Users
-import com.my.sparta.lecture.service.ApplyLectureService
+import com.my.sparta.lecture.application.domain.entity.Scheduler
+import com.my.sparta.lecture.application.domain.entity.UserScheduler
+import com.my.sparta.lecture.application.domain.entity.Users
+import com.my.sparta.lecture.application.service.ApplyLectureService
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.impl.annotations.MockK

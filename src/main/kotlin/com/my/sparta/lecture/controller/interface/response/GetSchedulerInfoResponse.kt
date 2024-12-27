@@ -1,7 +1,7 @@
 package com.my.sparta.lecture.controller.`interface`.response
 
-import com.my.sparta.lecture.domain.entity.Scheduler
-import com.my.sparta.lecture.domain.entity.UserScheduler
+import com.my.sparta.lecture.application.domain.entity.Scheduler
+import com.my.sparta.lecture.application.domain.entity.UserScheduler
 import lombok.Data
 import java.time.LocalDate
 import java.time.LocalDateTime

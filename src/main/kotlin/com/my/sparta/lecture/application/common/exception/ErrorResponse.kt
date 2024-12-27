@@ -1,4 +1,4 @@
-package com.my.sparta.lecture.exception
+package com.my.sparta.lecture.application.common.exception
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatusCode

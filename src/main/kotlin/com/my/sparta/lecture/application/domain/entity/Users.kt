@@ -1,6 +1,6 @@
-package com.my.sparta.lecture.domain.entity
+package com.my.sparta.lecture.application.domain.entity
 
-import com.my.sparta.lecture.domain.entity.UserScheduler.InitDate
+import com.my.sparta.lecture.application.domain.entity.UserScheduler.InitDate
 import jakarta.persistence.*
 import lombok.AccessLevel
 import lombok.Getter

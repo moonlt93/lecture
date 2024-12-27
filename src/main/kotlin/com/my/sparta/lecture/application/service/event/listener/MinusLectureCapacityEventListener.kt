@@ -1,9 +1,9 @@
-package com.my.sparta.lecture.service.event.listener
+package com.my.sparta.lecture.application.service.event.listener
 
-import com.my.sparta.lecture.domain.entity.Scheduler
-import com.my.sparta.lecture.domain.event.CapacityExceededEvent
-import com.my.sparta.lecture.domain.event.MinusCapacityEvent
-import com.my.sparta.lecture.exception.CapacityExceededException
+import com.my.sparta.lecture.application.domain.entity.Scheduler
+import com.my.sparta.lecture.application.domain.event.CapacityExceededEvent
+import com.my.sparta.lecture.application.domain.event.MinusCapacityEvent
+import com.my.sparta.lecture.application.common.exception.CapacityExceededException
 import com.my.sparta.lecture.repository.SchedulerRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

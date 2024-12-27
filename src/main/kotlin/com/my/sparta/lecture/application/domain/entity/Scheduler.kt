@@ -1,6 +1,6 @@
-package com.my.sparta.lecture.domain.entity
+package com.my.sparta.lecture.application.domain.entity
 
-import com.my.sparta.lecture.exception.CapacityExceededException
+import com.my.sparta.lecture.application.common.exception.CapacityExceededException
 import jakarta.persistence.*
 import lombok.AccessLevel
 import lombok.Getter

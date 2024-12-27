@@ -2,9 +2,9 @@ package com.my.sparta.lecture.controller.query
 
 import com.my.sparta.lecture.controller.`interface`.response.GetNonSelectedLectureInfoListResponse
 import com.my.sparta.lecture.controller.`interface`.response.GetSelectedLectureInfoList
-import com.my.sparta.lecture.domain.entity.Lecture
-import com.my.sparta.lecture.domain.entity.Scheduler
-import com.my.sparta.lecture.service.GetLectureListService
+import com.my.sparta.lecture.application.domain.entity.Lecture
+import com.my.sparta.lecture.application.domain.entity.Scheduler
+import com.my.sparta.lecture.application.service.GetLectureListService
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk

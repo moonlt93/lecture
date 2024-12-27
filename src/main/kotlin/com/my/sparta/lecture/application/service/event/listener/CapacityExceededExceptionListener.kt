@@ -1,6 +1,6 @@
-package com.my.sparta.lecture.service.event.listener
+package com.my.sparta.lecture.application.service.event.listener
 
-import com.my.sparta.lecture.domain.event.CapacityExceededEvent
+import com.my.sparta.lecture.application.domain.event.CapacityExceededEvent
 import com.my.sparta.lecture.repository.SchedulerRepository
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
